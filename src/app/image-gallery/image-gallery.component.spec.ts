@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GalleryComponent } from './image-gallery.component';
 import { ImageService } from '../image.service';
 import { FilterimagesPipe } from '../filterimages.pipe';
+import { By } from "@angular/platform-browser";
 
 describe('ImageGalleryComponent', () => {
   let component: GalleryComponent;
@@ -22,9 +23,8 @@ describe('ImageGalleryComponent', () => {
   });
 
   it('Debe crear las 5 imagenes y mostrarlas en pantalla', () => {
-    const fixture = TestBed.createComponent(GalleryComponent);
-    const image1 = 'perro1.jpg';
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
+    const compiled = fixture.debugElement;
+    const images = compiled.queryAll(By.css('img'));
+    expect(images.length).toBe(5)
   });
 });
