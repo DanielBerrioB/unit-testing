@@ -1,8 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { GalleryComponent } from './image-gallery.component';
 import { ImageService } from '../image.service';
 import { FilterimagesPipe } from '../filterimages.pipe';
 import { By } from "@angular/platform-browser";
+import { SSL_OP_NO_TICKET } from 'constants';
+
 
 describe('ImageGalleryComponent', () => {
   let component: GalleryComponent;
@@ -27,4 +29,18 @@ describe('ImageGalleryComponent', () => {
     const images = compiled.queryAll(By.css('img'));
     expect(images.length).toBe(5)
   });
+
+  it('Filtrar las imagenes de los perros y muestra 3 imagenes',fakeAsync( () => {
+    const compiled = fixture.debugElement;
+    const buttons = compiled.queryAll(By.css('button'));
+    const dogButton = buttons.find(button => button.nativeElement.textContent === 'Perro').nativeElement;
+    dogButton.click();
+    tick();
+    fixture.detectChanges();
+    const images = compiled.queryAll(By.css('img'));
+    expect(images.length).toBe(3);
+  }));
+
+
+
 });
