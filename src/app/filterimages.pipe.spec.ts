@@ -38,7 +38,4 @@ describe('FilterimagesPipe', () => {
     const filteredResult = pipe.transform(items, 'nada');
     expect(filteredResult.length).toBe(0);
   });
-
-  
-
 });
