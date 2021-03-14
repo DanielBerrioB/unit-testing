@@ -23,4 +23,22 @@ describe('FilterimagesPipe', () => {
     const filteredResult = pipe.transform(items, 'all');
     expect(filteredResult.length).toBe(5);
   });
+
+  it('Debe filtrar por la etiqueta perro y retornar todos los perros', () => {
+    const filteredResult = pipe.transform(items, 'perro');
+    expect(filteredResult.length).toBe(3);
+  });
+
+  it('Debe filtrar por la etiqueta gato y retornar todos los gatos', () => {
+    const filteredResult = pipe.transform(items, 'gato');
+    expect(filteredResult.length).toBe(2);
+  });
+
+  it('Debe filtrar por una etiqueta que no exista y no debe retornar nada', () => {
+    const filteredResult = pipe.transform(items, 'nada');
+    expect(filteredResult.length).toBe(0);
+  });
+
+  
+
 });
