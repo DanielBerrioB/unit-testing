@@ -9,6 +9,5 @@ export class FilterimagesPipe implements PipeTransform {
     return items.filter(item =>{    
       return item.brand === laptop;    
     });    
-  }    
-    
+  }     
 } 
