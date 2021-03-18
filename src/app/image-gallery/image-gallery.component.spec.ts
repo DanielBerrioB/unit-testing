@@ -56,12 +56,12 @@ describe('ImageGalleryComponent', () => {
     expect(images.length).toBe(3);
   }));
 
-  it('Se da click en el botón "Gato" y luego en "All" y muestra 5 imagenes', fakeAsync(() => {
+  it('Se da click en el botón "Perro" y luego en "All" y muestra 5 imagenes', fakeAsync(() => {
     const compiled = fixture.debugElement;
     const buttons = compiled.queryAll(By.css('button'));
-    const catButton = buttons.find(button => button.nativeElement.textContent === 'Perro').nativeElement;
+    const dogButton = buttons.find(button => button.nativeElement.textContent === 'Perro').nativeElement;
     const allButton = buttons.find(button => button.nativeElement.textContent === 'All').nativeElement;
-    catButton.click();
+    dogButton.click();
     tick();
     fixture.detectChanges();
     allButton.click();
